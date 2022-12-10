@@ -47,3 +47,9 @@ I ran two experiments for this model by the name exp0 and exp1 but settled for r
 
 You can also see the outputs for the same given below.
 ![](https://github.com/AnshMittal1811/MonocularDepthEstimation/blob/master/object_detection/extras/img3.png)
+
+---
+
+# Plan to Integrate
+I was planning to integrate it in the detector and predictor files for MP1(b). But, wasn't able to do so due to limited time and as I had to leave for a flight during this time. So, I plan to integrate it later when I reach and have enough time to formulate a comparative analysis as well!
+
