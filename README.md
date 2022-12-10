@@ -1,4 +1,7 @@
 # Monocular Depth Estimation
+
+For more information, please refer to [the additional materials](https://github.com/AnshMittal1811/MonocularDepthEstimation)!
+
 I read the following papers and have implemented their code for NYUv2 dataset. I think this code should also work fine with KITTI dataset: [U-Net: Convolutional Networks for Biomedical Image Segmentation](https://arxiv.org/abs/1505.04597) and [High Quality Monocular Depth Estimation via Transfer Learning](https://arxiv.org/abs/1812.11941).
 
 > This project implements the UNet Convolutional Neural Network with a ResNet encoder (pre-trained on imagenet weights) and achieved a soft-depth accuracy of 83% on the test set. Although, I've implemented it on the NYUv2 dataset, I think it should work fine on KITTI with a similar accuracy as well!
