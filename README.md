@@ -40,3 +40,10 @@ The output is demonstrated below where the left image represents the predicted d
 # Object Detection
 
 We also have implemented object detection using YOLOv5 [here](https://github.com/AnshMittal1811/MonocularDepthEstimation/tree/master/object_detection). The dataset used was taken from RoboFlow from [here](https://public.roboflow.com/object-detection/self-driving-car/3). This dataset consists of 15k images and is a relatively small dataset to fine-tune the weights of the YOLOv5 model. I planned to reduce the number of classes to accommodate for the MP1(b). I did this experiment on Colab and had to keep the dataset small and training as fast as possible in accordance with time. I plan to work on a W&B page for this project as well to compare different types of model.
+![](https://github.com/AnshMittal1811/MonocularDepthEstimation/blob/master/object_detection/extras/img1.png)
+
+I ran two experiments for this model by the name exp0 and exp1 but settled for results from the second one as they were significantly better given by the figure below.
+![](https://github.com/AnshMittal1811/MonocularDepthEstimation/blob/master/object_detection/extras/img2.png)
+
+You can also see the outputs for the same given below.
+![](https://github.com/AnshMittal1811/MonocularDepthEstimation/blob/master/object_detection/extras/img3.png)
