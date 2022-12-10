@@ -51,5 +51,60 @@ You can also see the outputs for the same given below.
 ---
 
 # Plan to Integrate
-I was planning to integrate it in the detector and predictor files for MP1(b). But, wasn't able to do so due to limited time and as I had to leave for a flight during this time. So, I plan to integrate it later when I reach and have enough time to formulate a comparative analysis as well!
+I was planning to integrate it in the detector and predictor files for MP1(b). But, wasn't able to do so due to limited time and as I had to leave for a flight during this time. So, I plan to integrate it later when I reach and have enough time to formulate a comparative analysis as well! Further, I planned to check my code along with these models so I had made certain changes to the simulator file that I think can be of use (so posting here): 
 
+```python
+def run_episode(
+    sim: Simulator, controller: Controller, predictor: Predictor, *, log_file: Path
+):
+    trace = deque()  # type: deque[TraceRow]
+
+    obs, img = sim.reset()
+    trace.append(observation_to_trace_row(obs, sim))
+    PATH = r"C:\Users\nayya\Documents\Paresh\USC\Course Work\Cyber Physical Systems\Assignment\images"
+    while True:
+        estimate_dist = predictor.predict(obs)  # here updated, was img
+        print("Timestep", sim.time_step)
+        action = controller.run_step(obs, estimate_dist=estimate_dist)
+        obs, img = sim.step(action)
+
+        if (sim.time_step % 5 == 0):
+            im = Image.fromarray(img)
+            im.save(os.path.join(PATH, f"{sim.time_step}.jpeg"))
+        ## for visualizing the image ##
+        plt.imshow(img, interpolation='nearest')
+
+        plt.savefig('camera_images/vision_input.png')
+
+        # plt.show()
+
+        trace.append(observation_to_trace_row(obs, sim))
+
+        if sim.completed:
+            break
+
+
+    with open(log_file, "w") as flog:
+        csv_stream = csv.writer(flog)
+        csv_stream.writerow(
+            [
+                "timestep",
+                "time_elapsed",
+                "ego_velocity",
+                "target_speed",
+                "distance_to_lead",
+                "lead_speed",
+            ]
+        )
+
+        for i, row in enumerate(trace):
+            row = [
+                i,
+                sim.dt * i,
+                row.ego_velocity,
+                row.target_speed,
+                row.distance_to_lead,
+                row.ado_velocity,
+            ]
+            csv_stream.writerow(row)
+```
