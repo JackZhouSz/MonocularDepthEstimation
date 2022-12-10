@@ -142,7 +142,7 @@ def run_episode(
 
     obs, img = sim.reset()
     trace.append(observation_to_trace_row(obs, sim))
-    PATH = r"C:\Users\nayya\Documents\Paresh\USC\Course Work\Cyber Physical Systems\Assignment\images"
+    PATH = r"C:\Users\acer\Semester3\Cyber Physical Systems\Assignment\images"
     while True:
         estimate_dist = predictor.predict(obs)  # here updated, was img
         print("Timestep", sim.time_step)
